@@ -1,0 +1,30 @@
+<mvc:View controllerName="at.clouddna.demo.controller.Main"
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns:f="sap.ui.layout.form"
+    xmlns="sap.m"
+    displayBlock="true"
+    >
+    <Page id="page" title="{i18n>title}">
+        <content>
+            <f:SimpleForm id="detail_simpleform" editable="true"
+            layout="ResponsiveGridLayout" labelSpanXL="3" labelSpanL="3" labelSpanM="3"
+            labelSpanS="12" emptySpanXL="4" emptySpanL="4" emptySpanM="4" emptySpanS="0"
+            columnsXL="1" columnsL="1" columnsM="1"
+            >
+            <f:content>
+                <Label id="labelFirstname" labelFor="inputFirstname" text="First name" />
+                <Input id="inputFirstname" />
+                <Label id="labelLastname" labelFor="inputLastname" text="Last name" />
+                <Input id="inputLastname"></Input>
+            </f:content>
+            </f:SimpleForm>
+        </content>
+        <footer>
+            <OverflowToolbar id="footerToolbar">
+                <ToolbarSpacer id="footerToolbarSpacer"/>
+                <Button id="saveButton" text="Save" type="Accept" icon="sap-icon://save" press="onSavePressed"></Button>
+                <Button id="cancelButton" text="Cancel" type="Reject" icon="sap-icon://cancel" press="onCancelPressed"></Button>
+            </OverflowToolbar>
+        </footer>
+    </Page>
+</mvc:View>
