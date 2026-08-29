@@ -3,6 +3,7 @@ import Input from "sap/m/Input";
 import MessageBox from "sap/m/MessageBox";
 import MessageToast from "sap/m/MessageToast";
 import Controller from "sap/ui/core/mvc/Controller";
+import BaseComponent from "sap/ui/core/UIComponent";
 import JSONModel from "sap/ui/model/json/JSONModel";
 
 /**
@@ -112,5 +113,10 @@ export default class Main extends Controller {
                 }
             }
         })
+    }
+
+    private onNavigateToDetail() :void {
+        let oRouter = (this.getOwnerComponent() as BaseComponent).getRouter();
+        oRouter.navTo("RouteDetail", {p1:"value12345"});
     }
 }

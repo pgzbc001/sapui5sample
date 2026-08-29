@@ -222,6 +222,15 @@
             <core:Icon id="core_age" src="{= ${ageModel>age} &lt; 20 ? 'sap-icon://employee' : 'sap-icon://manager' }" ></core:Icon>
         </mvc:View>
 
+        <!-- <List id="carrierList" headerText="Carrier" items="{/CarrierCollection}">
+            <StandardListItem id="sl" title="{CARRNAME}" description="{carrid}"
+                icon="/img/{carrid}.png" type="Navigation" press="onNavigateToDetail"
+            />
+        
+        </List> -->
+
+        <Button id="movetodetail" text="move to detail" press="onNavigateToDetail"></Button>
+
         </content>
     </Page>
 </mvc:View>

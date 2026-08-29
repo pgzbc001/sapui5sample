@@ -1,0 +1,13 @@
+<mvc:View id="Detail"
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns="sap.m"
+    xmlns:f="sap.ui.layout.form"
+    controllerName="at.clouddna.demo.controller.Detail"
+    displayBlock="true"
+>
+    <Page id="pageDetail" title="Details">
+        <content>
+            <Text id="ts" text="This is your detail page."></Text>
+        </content>
+    </Page>
+</mvc:View>
