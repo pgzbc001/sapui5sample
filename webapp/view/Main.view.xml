@@ -201,6 +201,26 @@
             <Text id="t_s1" text="{parts: [{path: 'employeeModel>/employee/firstName'}, {path: 'employeeModel>/employee/lastName'}], formatter: '.formatter.formatName'}"></Text>
         </mvc:View>
 
+        <mvc:View  id="mc_w2" controllerName="at.clouddna.demo.controller.Main"
+            xmlns:mvc="sap.ui.core.mvc"
+            xmlns="sap.m"
+        >
+            <Text id="txt_v2" text="{path:'employeeModel>/employee/birthDate', formatter:'.formatDate'}"></Text>
+        </mvc:View>
+
+        <mvc:View id="firstNameInput" controllerName=""
+            xmlns:mvc="sap.ui.core.mvc"
+            xmlns="sap.m"
+        >
+            <Input id="firstName_sample"  />
+        </mvc:View>
+
+        <mvc:View id="age_exp" controllerName=""
+            xmlns:mvc="sap.ui.core.mvc"
+            xmlns="sap.m"
+        >
+            <core:Icon id="core_age" src="{= ${ageModel>age} &lt; 20 ? 'sap-icon://employee' : 'sap-icon://manager' }" ></core:Icon>
+        </mvc:View>
 
         </content>
     </Page>

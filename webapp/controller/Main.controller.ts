@@ -53,10 +53,49 @@ export default class Main extends Controller {
                 "firstName": "Max",
                 "lastName": "Mustermann",
                 "age": 40,
+                "birthDate": new Date(1983, 5, 15)
             }
         }
         let modelData = new JSONModel(data);
         this.getView()?.setModel(modelData, "employeeModel");
+        let outAge = this.getView()?.byId("i3") as Input;
+        outAge.unbindProperty("value", false);
+
+        // formart
+        sap.ui.define([
+            "sap/ui/core/mvc/Controller",
+            "sap/ui/model/json/JSONModel"
+        ], function(Controller : any, JSONModel : any) {
+            "use strict";
+            return Controller.extend("at.clouddna.demo.controller.Main", {
+                formatDate: function(fvalue: string | Date | undefined) {
+                    if (fvalue) {
+                        return new Date(fvalue).toLocaleDateString()
+                    }
+                    return ""
+                }
+            })
+        })
+
+        let emp_exp = {
+            "emp_exp": {
+                "firstName": "Max",
+                "lastName": "Mustermann",
+                "age": 40,
+                "birthDate": new Date(1983, 5, 15)
+            }
+        }
+
+        // element binding
+        let firstNameInput = this.getView()?.byId("firstName_sample") as Input;
+        // this.getView()?.bindElement("/employee");
+        firstNameInput.bindElement("/emp_exp");
+        firstNameInput.bindProperty("value", "firstName");
+
+        // expression example
+        let age = 90
+        this.getView()?.setModel(new JSONModel({age: age}), "ageModel");
+
     }
 
     private onSavePressed() {
