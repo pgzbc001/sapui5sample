@@ -2,10 +2,12 @@
     xmlns:mvc="sap.ui.core.mvc"
     xmlns:f="sap.ui.layout.form"
     xmlns="sap.m"
+    xmlns:core="sap.ui.core"
     displayBlock="true"
     >
     <Page id="page" title="{i18n>title}">
         <content>
+        <!-- <content>
             <f:SimpleForm id="detail_simpleform" editable="true"
             layout="ResponsiveGridLayout" labelSpanXL="3" labelSpanL="3" labelSpanM="3"
             labelSpanS="12" emptySpanXL="4" emptySpanL="4" emptySpanM="4" emptySpanS="0"
@@ -25,6 +27,181 @@
                 <Button id="saveButton" text="Save" type="Accept" icon="sap-icon://save" press="onSavePressed"></Button>
                 <Button id="cancelButton" text="Cancel" type="Reject" icon="sap-icon://cancel" press="onCancelPressed"></Button>
             </OverflowToolbar>
-        </footer>
+        </footer> -->
+
+        <Text id="text_sample"  text="Hello World" maxLines="1" wrapping="false" />
+        <Input id="input_sample" placeholder="Enter text here..." description="Sample input" />
+        <Input id="input_suggestion" showSuggestion="true" showClearIcon="true">
+            <suggestionItems>
+                <core:Item id="suggestionItem1" text="Suggestion 1" />
+                <core:Item id="suggestionItem2" text="Suggestion 2" />
+                <core:Item id="suggestionItem3" text="Suggestion 3" />
+            </suggestionItems>
+        </Input>
+        <StepInput id="stepInput_sample" max="10" min="0" step="1" textAlign="Center" value="5"></StepInput>
+        <MaskInput id="maskInput_sample" mask="+43 9999 9999999999" ></MaskInput>
+        <TextArea id="textArea_sample" value="Sample text area content" rows="3" cols="40"></TextArea>
+        <DatePicker id="datePicker_sample"></DatePicker>
+        <Label id="label_sample" text="Do u like this book?"  labelFor="checkbox_sample"/>
+        <CheckBox id="checkbox_sample" selected="true" />
+        <Label id="lablel_switch_sample" text="Do u like this book?"  labelFor="switch_sample"/>
+        <Switch id="switch_sample" state="true" customTextOn="Yes" customTextOff="No"></Switch>
+        <RadioButtonGroup id="radio_button_group" selectedIndex="1"  columns="1">
+            <RadioButton id="radioButton1" text="Option 1" />
+            <RadioButton id="radioButton2" text="Option 2" />
+            <RadioButton id="radioButton3" text="Option 3" />
+        </RadioButtonGroup>
+        <RangeSlider id="rangeslider_sample" min="0" max="200" range="20,150" 
+            showAdvancedTooltip="true" enableTickmarks="true"></RangeSlider>
+        <Label id="select_label_sample" text="my favorite sap ..." labelFor="select_sample"/>
+        <Select id="select_sample" forceSelection="false" selectedKey="2">
+            <items>
+                <core:Item id="item1" key="1" text="UI5" />
+                <core:Item id="item2" key="2" text="Fiori" />
+                <core:Item id="item3" key="3" text="OData" />
+            </items>
+        </Select>
+        <Label id="combox_label_sample" labelFor="combox_sample"></Label>
+        <ComboBox id="combox_sample">
+            <items>
+                <core:Item id="comboxItem1" text="Option 1" />
+                <core:Item id="comboxItem2" text="Option 2" />
+                <core:Item id="comboxItem3" text="Option 3" />
+            </items>
+        </ComboBox>
+        <Button id="default_button" text="Default Button"></Button>
+        <Button id="accept_button" text="Accept Button" type="Accept"></Button>
+        <Button id="reject_button" text="Reject Button" type="Reject"></Button>
+        <Button id="transparent" text="Transparent Button" type="Transparent"></Button>
+        <Button id="back" type="Back"></Button>
+        <Button id="important" text="Important Button" type="Emphasized"></Button>
+        <Button id="hava_icon_button" text="Button with Icon" icon="sap-icon://home"></Button>
+
+        <MenuButton id="menubutton_sample" text="I'm a Menu Button" menuPosition="BeginBottom" buttonMode="Split">
+            <menu>
+                <Menu id="menu_sample">
+                    <items>
+                        <MenuItem id="menuItem1" text="Option 1" />
+                        <MenuItem id="menuItem2" text="Option 2" />
+                        <MenuItem id="menuItem3" text="Option 3">
+                            <items>
+                                <MenuItem id="submenuItem1" text="Sub Option 1" />
+                                <MenuItem id="submenuItem2" text="Sub Option 2" />
+                                <MenuItem id="submenuItem3" text="Sub Option 3" />
+                            </items>
+                        </MenuItem>
+                    </items>
+                </Menu>
+            </menu>
+        </MenuButton>
+        <SegmentedButton id="segmentbutton_sample" selectedKey="second">
+            <items>
+                <SegmentedButtonItem id="segmentItem1" key="first" text="Option 1" />
+                <SegmentedButtonItem id="segmentItem2" key="second" text="Option 2" />
+                <SegmentedButtonItem id="segmentItem3" key="third" text="Option 3" />
+            </items>
+        </SegmentedButton>
+        <Link id="link_sample" text="I open SAPUI5" href="https://ui5.sap.com" target="_blank"></Link>
+        <core:Icon id="icon_sample" src="sap-icon://course-book" color="blue" />
+
+        <f:Form id="f_form_sample" editable="true">
+            <f:title>
+                <core:Title id="formTitle" text="Book Data"></core:Title>
+            </f:title>
+            <f:layout>
+                <f:ColumnLayout id="c_l" columnsM="1" columnsL="2" columnsXL="2" >
+                </f:ColumnLayout>
+            </f:layout>
+            <f:formContainers>
+                <f:FormContainer id="f_s">
+                    <f:formElements>
+                        <f:FormElement id="f_fe" label="Book Name">
+                            <f:fields>
+                                <Input id="f_input1" placeholder="book name" />
+                            </f:fields>
+                        </f:FormElement>
+                        <f:FormElement id="f2" label="ISBN">
+                            <f:fields>
+                                <Input id="f_input2" placeholder="isbn" />
+                            </f:fields>
+                        </f:FormElement>
+                        <f:FormElement id="f3" label="Author">
+                            <f:fields>
+                                <Input id="f_input3" placeholder="author" />
+                            </f:fields>
+                        </f:FormElement>
+                    </f:formElements>
+                </f:FormContainer>
+            </f:formContainers>
+        </f:Form>
+
+        <List id="list_sample" items="{booksModel>/books}" headerText="Books">
+            <items>
+                <StandardListItem 
+                    id="st_sample" 
+                    title="{booksModel>name}" 
+                    description="{booksModel>author}" 
+                    info="{= ${booksModel>inStock} ? 'In Stock' : 'Out of Stock'}"
+                    infoState="{= ${booksModel>inStock} ? 'Success' : 'Error'}"
+                />
+            </items>
+        </List>
+
+        <Table id="table_sample" headerText="Books" items="{booksModel>/books}">
+        <columns>
+            <Column id="c1">
+                <Text id="t1" text="Name" />
+            </Column>
+            <Column id="c2" >
+                <Text id="t2" text="Author" />
+            </Column>
+            <Column id="c3" demandPopin="true" minScreenWidth="Desktop">
+                <Text id="t3" text="Price" />
+            </Column>
+            <Column id="c4">
+                <Text id="t4" text="Release Year" />
+            </Column>
+            <Column id="c5">
+                <Text id="t5" text="In Stock" />
+            </Column>
+        </columns>
+        <ColumnListItem id="cli1">
+            <cells>
+                <Text id="nameCell" text="{booksModel>name, mode:'OneWay'}" />
+                <Text id="authorCell" text="{booksModel>author}" />
+                <Text id="priceCell" text="{booksModel>price} {booksModel>priceUint}" />
+                <Text id="releaseYearCell" text="{booksModel>releaseYear}" />
+                <ObjectStatus id="ob_s" text="{= ${booksModel>inStock} ? 'In Stock' : 'Out of Stock'}" 
+                    state="{= ${booksModel>inStock} ? 'Success' : 'Error'}" />
+            </cells>
+        </ColumnListItem>
+        </Table>
+
+        <OverflowToolbar id="otb1" width="100%">
+            <Title id="t_s" text="I' m a title"></Title>
+            <ToolbarSpacer id="t_s_s" />
+            <Button id="b11" text="press me"></Button>
+            <ToolbarSeparator id="t_s_sep" />
+            <Button id="b12" text="don't press me" type="Negative"></Button>
+            <Button id="b13" icon="sap-icon://settings"></Button>
+        </OverflowToolbar>
+        <PDFViewer id="pdf_v" title="sample PDF" isTrustedSource="false" displayType="Embedded"
+            source="https://www.w3.org/WAI/ER/tests/xhtml/testfiles/resources/pdf/dummy.pdf"
+        >
+        </PDFViewer>
+        <ProgressIndicator id="pi1" percentValue="45" displayValue="45%" state="Information"></ProgressIndicator>
+
+        <mvc:View id="mc_w" controllerName="at.clouddna.demo.controller.Main"
+            xmlns:mvc="sap.ui.core.mvc"
+            xmlns="sap.m"
+            >
+            <Input id="i1" value="{employeeModel>/employee/firstName}" />
+            <Input id="i2" value="{employeeModel>/employee/lastName}" />
+            <Input id="i3" value="{employeeModel>/employee/age}" />
+            <Text id="t_s1" text="{parts: [{path: 'employeeModel>/employee/firstName'}, {path: 'employeeModel>/employee/lastName'}], formatter: '.formatter.formatName'}"></Text>
+        </mvc:View>
+
+
+        </content>
     </Page>
 </mvc:View>
