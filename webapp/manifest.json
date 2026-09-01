@@ -70,19 +70,19 @@
         "viewType": "XML",
         "path": "at.clouddna.demo.view",
         "async": true,
-        "viewPath": "at.clouddna.demo.view"
+        "bypassed": {"target":"NotFound"}
       },
       "routes": [
         {
           "name": "RouteMain",
-          "pattern": ":?query:",
+          "pattern": "",
           "target": [
             "TargetMain"
           ]
         },
         {
           "name": "RouteDetail",
-          "pattern": "staticDetail/${p1}",
+          "pattern": "staticDetail/${p1}/{?queryParam}",
           "target": [
             "Detail"
           ]
@@ -102,6 +102,10 @@
           "clearControlAggregation": false,
           "viewId": "Detail",
           "viewName": "Detail"
+        },
+        "NotFound" :{
+          "viewId": "NotFound",
+          "viewName": "NotFound"
         }
       }
     },

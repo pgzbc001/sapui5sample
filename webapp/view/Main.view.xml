@@ -230,7 +230,7 @@
         </List> -->
 
         <Button id="movetodetail" text="move to detail" press="onNavigateToDetail"></Button>
-
+        <Button id="notFound" text="not found test" press="notFoundTest"></Button>
         </content>
     </Page>
 </mvc:View>

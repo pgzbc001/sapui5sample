@@ -1,0 +1,17 @@
+<mvc:View id="NotFound"
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns="sap.m"
+    xmlns:f="sap.ui.layout.form"
+    controllerName="at.clouddna.demo.controller.NotFound"
+    displayBlock="true"
+>
+    <IllustratedMessage id="il_m"
+        title="404 Not Found :("
+        description="The page you are looking for does not exist."
+        illustrationType="sapIllus-PageNotFound"
+    >
+        <additionalContent>
+            <Button id="notfound_btn" text="Take me back to the list" press="onNavToMain"></Button>
+        </additionalContent>
+    </IllustratedMessage>
+</mvc:View>

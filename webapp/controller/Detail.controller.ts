@@ -14,9 +14,12 @@ export default class Detail extends Controller {
     private onPatternMatched(oEvent: any): void {
         const oArgs = oEvent.getParameters().arguments;
         const sParam1 = oArgs.p1;
+        const queryParams = oArgs["?queryParam"]
 
-        MessageBox.show("P1: " + sParam1, {
-            title: "Routing param"
-        });
+        MessageBox.show(
+            "P1: " + sParam1 + "\n"
+                + "value1:" + queryParams.value1 + "\n"
+                + "value2:" + queryParams.value2, { title: "Routing param"}
+        );
     }
 }

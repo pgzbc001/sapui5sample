@@ -3,7 +3,7 @@ import Input from "sap/m/Input";
 import MessageBox from "sap/m/MessageBox";
 import MessageToast from "sap/m/MessageToast";
 import Controller from "sap/ui/core/mvc/Controller";
-import BaseComponent from "sap/ui/core/UIComponent";
+import UIComponent from "sap/ui/core/UIComponent";
 import JSONModel from "sap/ui/model/json/JSONModel";
 
 /**
@@ -115,8 +115,25 @@ export default class Main extends Controller {
         })
     }
 
-    private onNavigateToDetail() :void {
-        let oRouter = (this.getOwnerComponent() as BaseComponent).getRouter();
-        oRouter.navTo("RouteDetail", {p1:"value12345"});
+    private onNavigateToDetail(oEvent : Event) :void {
+        let oRouter = (this.getOwnerComponent() as UIComponent).getRouter();
+        let onBindingContext = (oEvent as any).getSource().getBindingContext()
+        // let oObject = onBindingContext?.getObject()
+        let spath = onBindingContext?.getPath()
+        oRouter.navTo("RouteDetail",
+            {
+                path: encodeURIComponent(spath),
+                p1:"value12345",
+                queryParam: {
+                    value1: "Asdf",
+                    value2: 1234,
+                }
+            }
+        );
+    }
+
+    private notFoundTest(oEvent: Event) : void {
+        let oRouter = (this.getOwnerComponent() as UIComponent).getRouter()
+        oRouter.parse("/nothavethispath")
     }
 }
