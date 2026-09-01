@@ -3,6 +3,7 @@
     xmlns:f="sap.ui.layout.form"
     xmlns="sap.m"
     xmlns:core="sap.ui.core"
+    xmlns:fb="sap.ui.comp.filterbar"
     displayBlock="true"
     >
     <Page id="page" title="{i18n>title}">
@@ -231,6 +232,48 @@
 
         <Button id="movetodetail" text="move to detail" press="onNavigateToDetail"></Button>
         <Button id="notFound" text="not found test" press="notFoundTest"></Button>
+
+        <Input id="i_v" value="{filterModel>/firstname}"></Input>
+        <f:SimpleForm id="f_sf"
+            editable="true"
+            layout="ResponsiveGridLayout"
+            labelSpanXL="3" labelSpanL="3" labelSpanM="3"
+            labelSpanS="12" emptySpanXL="4" emptySpanL="4" emptySpanM="4" emptySpanS="0"
+            columnsXL="1" columnsL="1" columnsM="1"
+        >
+            <f:content>
+                <Label id="l_firstname" labelFor="input_firstname" text="First Name"></Label>
+                <Input id="input_firstname" value="{filterModel>/firstname}"></Input>
+                <Label id="l_lastname" labelFor="input_lastname" text="Last Name"></Label>
+                <Input id="input_lastname" value="{filterModel>/lastname}"></Input>
+            </f:content>
+        </f:SimpleForm>
+        
+        <fb:FilterBar id="filterbar_sample" search="onSearch" clear="onClear"
+            showClearOnFB="true" showFilterConfiguration="false"
+        >
+            <fb:filterGroupItems>
+                <fb:FilterGroupItem id="fgi1" name="group1" label="Group 1"
+                   groupName="Group1" visibleInFilterBar="true">
+                    <fb:control>
+                        <Select id="select_hobby" forceSelection="false" resetOnMissingKey="true" >
+                            <core:Item id="s_hobby1" key="1" text="1" />
+                            <core:Item id="s_hobby2" key="2" text="2" />
+                            <core:Item id="s_hobby3" key="3" text="3" />
+                        </Select>
+                    </fb:control>
+                </fb:FilterGroupItem>
+            </fb:filterGroupItems>
+        </fb:FilterBar>
+
+        <List id="d_list" headerText="Data List" items="{filterModel>/hobbies}">
+        <!-- <List id="d_list" headerText="Data List" items="{ path: 'filterModel>/hobbies', filters: [ { path: 'skillLevel', operator: 'EQ', value1: '2' } ] }"> -->
+            <items>
+                <StandardListItem id="d_sl" title="{filterModel>name}" 
+                    info="Skill level: {filterModel>skillLevel}" />
+            </items>
+
+        </List>
         </content>
     </Page>
 </mvc:View>
