@@ -16,6 +16,7 @@ import Filter from "sap/ui/model/Filter";
  */
 export default class Main extends Controller {
 
+    private oSkillSelectModel : JSONModel;
     public onInit(): void {
         // let oView = this.getView(),
         //     oInputFirstname = oView?.byId("inputFirstname") as Input;
@@ -112,6 +113,17 @@ export default class Main extends Controller {
         let age = 90
         this.getView()?.setModel(new JSONModel({age: age}), "ageModel");
 
+        //
+        this.oSkillSelectModel = new JSONModel({
+            selectedSkillLevel: "",
+            skillLevels: [
+                { key: "1"},
+                { key: "2"},
+                { key: "3"}
+            ]
+        });
+        this.getView()?.setModel(this.oSkillSelectModel, "filter");
+
     }
 
     private onSavePressed() {
@@ -153,15 +165,16 @@ export default class Main extends Controller {
     }
 
     private onSearch() : void {
-        console.log("==========")
+
         let oList = this.getView()?.byId("d_list") as List,
         oListBinding = oList?.getBinding("items") as ListBinding,
-        oSelectSkillLevel = this.getView()?.byId("select_hobby") as Select,
-        oSelectedKey = oSelectSkillLevel?.getSelectedKey(),
-        aFilters : Array<Filter> = [];
+        // oSelectSkillLevel = this.getView()?.byId("select_hobby") as Select,
+        // oSelectedKey = oSelectSkillLevel?.getSelectedKey(),
+        aFilters : Array<Filter> = [],
+        sSelectedKey = this.oSkillSelectModel.getProperty("/selectedSkillLevel");
 
-        if (oSelectedKey) {
-            aFilters.push(new Filter({path: "skillLevel", operator: "EQ", value1: oSelectedKey}))
+        if (sSelectedKey) {
+            aFilters.push(new Filter({path: "skillLevel", operator: "EQ", value1: sSelectedKey}))
         }
         oListBinding.filter(aFilters)
 
@@ -169,9 +182,10 @@ export default class Main extends Controller {
 
     private onClear() : void {
         let oList = this.getView()?.byId("d_list") as List,
-        oListBinding = oList?.getBinding("items") as ListBinding,
-        oSelectSkillLevel = this.getView()?.byId("select_hobby") as Select;
-        oSelectSkillLevel.setSelectedKey("")
+        oListBinding = oList?.getBinding("items") as ListBinding;
+        // oSelectSkillLevel = this.getView()?.byId("select_hobby") as Select;
+        // oSelectSkillLevel.setSelectedKey("")
+        this.oSkillSelectModel.setProperty("/selectedSkillLevel", "");
         oListBinding.filter([])
     }
 }

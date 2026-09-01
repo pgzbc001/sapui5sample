@@ -256,10 +256,13 @@
                 <fb:FilterGroupItem id="fgi1" name="group1" label="Group 1"
                    groupName="Group1" visibleInFilterBar="true">
                     <fb:control>
-                        <Select id="select_hobby" forceSelection="false" resetOnMissingKey="true" >
-                            <core:Item id="s_hobby1" key="1" text="1" />
+                        <Select id="select_hobby" forceSelection="false" resetOnMissingKey="true" items="{filter>/skillLevels}" selectedKey="{filter>/selectedSkillLevel}">
+                            <!-- <core:Item id="s_hobby1" key="1" text="1" />
                             <core:Item id="s_hobby2" key="2" text="2" />
-                            <core:Item id="s_hobby3" key="3" text="3" />
+                            <core:Item id="s_hobby3" key="3" text="3" /> -->
+                            <items>
+                                <core:Item id="cr" key="{filter>key}" text="{filter>key}" />
+                            </items>
                         </Select>
                     </fb:control>
                 </fb:FilterGroupItem>
