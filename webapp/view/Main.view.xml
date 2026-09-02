@@ -269,7 +269,15 @@
             </fb:filterGroupItems>
         </fb:FilterBar>
 
+
         <List id="d_list" headerText="Data List" items="{filterModel>/hobbies}">
+        <headerToolbar>
+            <OverflowToolbar id="hobbiesToolbar">
+                <Title id="hobbiesTitle" text="Hobbies" />
+                <ToolbarSpacer id="toolbarSpace" />
+                <Button id="sortBtn" tooltip="Sort" icon="sap-icon://sort" press="openViewSettingDialog"/>
+            </OverflowToolbar>
+        </headerToolbar>
         <!-- <List id="d_list" headerText="Data List" items="{ path: 'filterModel>/hobbies', filters: [ { path: 'skillLevel', operator: 'EQ', value1: '2' } ] }"> -->
             <items>
                 <StandardListItem id="d_sl" title="{filterModel>name}" 

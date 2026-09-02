@@ -10,6 +10,9 @@ import List from "sap/m/List";
 import ListBinding from "sap/ui/model/ListBinding";
 import Select from "sap/m/Select";
 import Filter from "sap/ui/model/Filter";
+import ViewSettingsDialog from "sap/m/ViewSettingsDialog";
+import Fragment from "sap/ui/core/Fragment";
+import Sorter from "sap/ui/model/Sorter";
 
 /**
  * @namespace at.clouddna.demo.controller
@@ -17,6 +20,9 @@ import Filter from "sap/ui/model/Filter";
 export default class Main extends Controller {
 
     private oSkillSelectModel : JSONModel;
+
+    private oViewSettingDialog : ViewSettingsDialog;
+
     public onInit(): void {
         // let oView = this.getView(),
         //     oInputFirstname = oView?.byId("inputFirstname") as Input;
@@ -187,5 +193,31 @@ export default class Main extends Controller {
         // oSelectSkillLevel.setSelectedKey("")
         this.oSkillSelectModel.setProperty("/selectedSkillLevel", "");
         oListBinding.filter([])
+    }
+
+    private openViewSettingDialog() : void {
+
+        if (!this.oViewSettingDialog) {
+            Fragment.load({
+                id: this.getView()?.getId(),
+                name:"at.clouddna.demo.view.fragment.ViewSettingsDialog",
+                controller: this
+            }).then((oDialog: any) => {
+               this.getView()?.addDependent(oDialog);
+               this.oViewSettingDialog = oDialog;
+               this.oViewSettingDialog.open();
+            })
+        } else {
+            this.oViewSettingDialog.open();
+        }
+    }
+
+    private onConfirm(oEvent: Event) : void {
+        let oList = this.getView()?.byId("d_list") as List,
+        oListBinding = oList?.getBinding("items") as ListBinding,
+        bSortDescending = (oEvent as any).getParameters()?.sortDescending,
+        sSortKey = (oEvent as any).getParameters()?.sortItem?.getKey(),
+        oSorter = new Sorter(sSortKey, bSortDescending);
+        oListBinding.sort(oSorter)
     }
 }
