@@ -1,0 +1,19 @@
+<core:FragmentDefinition xmlns="sap.m" xmlns:core="sap.ui.core" xmlns:form="sap.ui.layout.form">
+    <form:SimpleForm id="editForm">
+        <form:toolbar>
+            <Toolbar id="e_toolbar">
+                <Title id="e_title" text="Edit" />
+                <ToolbarSpacer id="e_toolbarSpacer" />
+                <Button id="e_button_save" icon="sap-icon://save" press="onSavePress" />
+            </Toolbar>
+        </form:toolbar>
+        <Label id="e_label_edit_title" text="Title" />
+        <Input id="e_text_edit_title" value="{/title}" />
+        <Label id="e_label_edit_description" text="Description" />
+        <Input id="e_text_edit_description" value="{/description}" />
+        <Label id="e_label_edit_releaseYear" text="Release Year" />
+        <Input id="e_text_edit_releaseYear" value="{/releaseYear}" />
+        <Label id="e_label_edit_price" text="Price" />
+        <Input id="e_text_edit_price" value="{/price}" description="€" />
+    </form:SimpleForm>
+</core:FragmentDefinition>

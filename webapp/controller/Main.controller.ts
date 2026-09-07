@@ -13,6 +13,8 @@ import Filter from "sap/ui/model/Filter";
 import ViewSettingsDialog from "sap/m/ViewSettingsDialog";
 import Fragment from "sap/ui/core/Fragment";
 import Sorter from "sap/ui/model/Sorter";
+import SimpleForm from "sap/ui/layout/form/SimpleForm";
+import Page from "sap/m/Page";
 
 /**
  * @namespace at.clouddna.demo.controller
@@ -129,6 +131,14 @@ export default class Main extends Controller {
             ]
         });
         this.getView()?.setModel(this.oSkillSelectModel, "filter");
+        //
+        const modelFragment = new JSONModel({
+            title: "SAPUI5",
+            description: "A Comprehensive Guide",
+            releaseYear: 2025,
+            price: 49.99
+        });
+        this.getView()?.setModel(modelFragment);
 
     }
 
@@ -220,4 +230,37 @@ export default class Main extends Controller {
         oSorter = new Sorter(sSortKey, bSortDescending);
         oListBinding.sort(oSorter)
     }
+
+    private editFragment: Promise<any>;
+    private onEditPress(oEvent: Event) : void {
+        if (!this.editFragment) {
+            this.editFragment = Fragment.load({
+                id: this.getView()?.getId(),
+                name: "at.clouddna.demo.view.fragment.EditBook",
+                controller: this
+            });
+        }
+        this.editFragment.then((fragmentContent: SimpleForm) => {
+            const page = (this.getView()?.byId("page") as Page);
+            page.removeAllContent();
+            page.addContent(fragmentContent);
+        })
+    }
+
+    private displayFragment: Promise<any>;
+    private onSavePress() {
+        if (!this.displayFragment) {
+            this.displayFragment = Fragment.load({
+                id: this.getView()?.getId(),
+                name: "at.clouddna.demo.view.fragment.DisplayBook",
+                controller: this
+            });
+        }
+        this.displayFragment.then((fragmentContent: SimpleForm) => {
+            const page = (this.getView()?.byId("page") as Page);
+            page.removeAllContent();
+            page.addContent(fragmentContent);
+        })
+    }
+
 }

@@ -283,8 +283,10 @@
                 <StandardListItem id="d_sl" title="{filterModel>name}" 
                     info="Skill level: {filterModel>skillLevel}" />
             </items>
-
         </List>
+
+        <core:Fragment id="displayFragment" fragmentName="at.clouddna.demo.view.fragment.DisplayBook" />
+
         </content>
     </Page>
 </mvc:View>
