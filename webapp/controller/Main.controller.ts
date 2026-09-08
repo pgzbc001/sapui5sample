@@ -309,7 +309,7 @@ export default class Main extends Controller {
             oInput.setValueState("None");
             oInput.setValueStateText("");
         } else {
-            oInput.setValueState("Error");
+            oInput.setValueState("Error"); // Warning, Error, Success, Information, None
             oInput.setValueStateText("Please enter a valid number (10-13 digits).");
         }
     }
