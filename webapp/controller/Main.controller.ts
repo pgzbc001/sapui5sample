@@ -15,6 +15,10 @@ import Fragment from "sap/ui/core/Fragment";
 import Sorter from "sap/ui/model/Sorter";
 import SimpleForm from "sap/ui/layout/form/SimpleForm";
 import Page from "sap/m/Page";
+import Dialog from "sap/m/Dialog";
+
+import Core from "sap/ui/core/Core";
+import ResourceModel from "sap/ui/model/resource/ResourceModel";
 
 /**
  * @namespace at.clouddna.demo.controller
@@ -139,7 +143,8 @@ export default class Main extends Controller {
             price: 49.99
         });
         this.getView()?.setModel(modelFragment);
-
+        //
+        sap.ui.getCore().getMessageManager().registerObject(this.getView()?.byId("input_v") as Input, true);
     }
 
     private onSavePressed() {
@@ -263,4 +268,49 @@ export default class Main extends Controller {
         })
     }
 
+    private dialogFragment: Promise<any>;
+    private onBuyPress() {
+        if (!this.dialogFragment) {
+            this.dialogFragment = Fragment.load({
+                id: this.getView()?.getId(),
+                name: "at.clouddna.demo.view.fragment.BuyBookDialog",
+                controller: this
+            });
+        }
+
+        this.dialogFragment.then((dialog: Dialog) => {
+            this.getView()?.addDependent(dialog);
+            dialog.open();
+        })
+    }
+
+    private onCancelPress(event: Event, action: string | undefined) {
+        this.dialogFragment.then((dialog: Dialog) => {
+            dialog.close();
+            if (action === 'buy') {
+                MessageBox.success("Successfully bought the book.");
+            }
+        })
+    }
+
+    public onLangChange(oEvent: any): void {
+        const lang = oEvent.getParameter("selectedItem").getKey();
+        Core.getConfiguration().setLanguage(lang);
+        const i18nModel = this.getView()?.getModel("i18n") as ResourceModel;
+        i18nModel.refresh();
+    }
+
+    private onInputChange(oEvent: any): void {
+        let sValue = oEvent.getParameter("value"),
+        oRegEx = new RegExp("^[0-9]{10,13}$"),
+        oInput = oEvent.getSource() as Input;
+
+        if (oRegEx.test(sValue)) {
+            oInput.setValueState("None");
+            oInput.setValueStateText("");
+        } else {
+            oInput.setValueState("Error");
+            oInput.setValueStateText("Please enter a valid number (10-13 digits).");
+        }
+    }
 }

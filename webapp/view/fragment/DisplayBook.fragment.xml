@@ -5,6 +5,7 @@
             <Title id="d_title" text="Display" />
             <ToolbarSpacer id="d_toolbarSpacer" />
             <Button id="d_button_edit" icon="sap-icon://edit" press="onEditPress" />
+            <Button id="d_button_buy" icon="sap-icon://credit-card" press="onBuyPress" />
         </Toolbar>
     </form:toolbar>
         <Label id="d_label_title" text="Title" />

@@ -286,6 +286,16 @@
         </List>
 
         <core:Fragment id="displayFragment" fragmentName="at.clouddna.demo.view.fragment.DisplayBook" />
+        
+        <Select change="onLangChange" id="lang_s">
+            <core:Item id="item_zh" key="zh" text="中文"/>
+            <core:Item id="item_en" key="en" text="English"/>
+            <core:Item id="item_ja" key="ja" text="日本語"/>
+        </Select>
+
+        <Text id="i18n_sample" text="{i18n>sample.text}"></Text>
+
+        <Input id="input_v" value="{ path: 'filterModel>/firstname', type: 'sap.ui.model.type.String', constraints: { maxLength: 20 } }" change="onInputChange" />
 
         </content>
     </Page>

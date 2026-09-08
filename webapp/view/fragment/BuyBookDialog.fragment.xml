@@ -1,0 +1,14 @@
+<core:FragmentDefinition xmlns="sap.m" xmlns:core="sap.ui.core" xmlns:form="sap.ui.layout.form">
+    <Dialog id="buyBookDialog" title="Buy Book" resizable="true" draggable="true" icon="sap-icon://credit-card">
+        <content>
+            <form:SimpleForm id="f_s_simpleForm">
+                <Label id="l_amount" text="Amount" />
+                <StepInput id="s_i" value="1"></StepInput>
+            </form:SimpleForm>
+        </content>
+        <buttons>
+            <Button id="b_buy" text="Buy" press="onCancelPress($event, 'buy')" />
+            <Button id="b_cancel" text="Cancel" type="Accept" press="onCancelPress($event, 'cancel')" />
+        </buttons>
+    </Dialog>
+</core:FragmentDefinition>
