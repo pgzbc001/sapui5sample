@@ -4,6 +4,7 @@
     xmlns="sap.m"
     xmlns:core="sap.ui.core"
     xmlns:fb="sap.ui.comp.filterbar"
+    xmlns:custom="at.clouddna.demo.controls"
     displayBlock="true"
     >
     <Page id="page" title="{i18n>title}">
@@ -294,9 +295,18 @@
         </Select>
 
         <Text id="i18n_sample" text="{i18n>sample.text}"></Text>
-
         <Input id="input_v" value="{ path: 'filterModel>/firstname', type: 'sap.ui.model.type.String', constraints: { maxLength: 20 } }" change="onInputChange" />
 
+        <custom:PropertyList
+            id="myApple"
+            mainLabel="An Apple">
+            <core:Item id="color" key="color" text="Red" />
+            <core:Item id="type" key="type" text="Red Delicious" />
+            <core:Item id="taste" key="taste" text="sweet" />
+        </custom:PropertyList>
+
+        <custom:CancellationButton id="CancelButton" cancellationState="false" cancel="onCancelPressCustom">
+        </custom:CancellationButton>
         </content>
     </Page>
 </mvc:View>

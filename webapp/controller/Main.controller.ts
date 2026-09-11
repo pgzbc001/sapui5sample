@@ -313,4 +313,8 @@ export default class Main extends Controller {
             oInput.setValueStateText("Please enter a valid number (10-13 digits).");
         }
     }
+
+    public onCancelPressCustom(event: any) {
+        MessageToast.show("I was cancelled!")
+    }
 }
